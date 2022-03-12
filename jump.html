@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="swap.png">
+    <title>Jumping Boxes</title>
+    <style>
+      
+      .header {
+        display: block;
+        background-color: #3486e3;
+        font-size: 20px;
+        font-family: Futura;
+        padding: 30px;
+        vertical-align: middle;
+        text-align: center;
+        color: white;
+      }
+
+      h1 {
+        display: inline-block;
+        font-size: 50px;
+        margin: 0px;
+        padding: 0px;
+      }
+      
+      body {
+        margin: 0px;
+        background-color: #bad6f7;
+        text-align: center;
+      }
+      
+      input {
+        width: 100px;
+        padding: 10px;
+        margin: 10px;
+        font-size: 14px;
+        border-radius: 10px;
+        border: none;
+        background-color: white;
+        font-size: 14px;
+      }
+      
+      #button:hover { background-color: #3486e3; }
+      #button:active { background-color: #f2de46; }
+  
+    </style>
+  </head>
+  <body>
+    
+    <!-- Header -->
+    <div class="header">
+      <h1>Jumping Boxes</h1>
+      <br>Click the button, see what happens!
+    </div>
+    <br>
+    
+    <!-- Form -->
+    <form>
+      <input type="text" value="abc" id="left">
+      <input type="button" value="JUMP >" id="button">
+      <input type="text" id="right">
+    </form>
+    
+    <script language="javascript">
+      window.onload = function() {
+        button = document.getElementById("button");
+        button.addEventListener("click", jump);
+      }
+      
+      function jump()
+      {
+          leftBox = document.getElementById("left");
+          rightBox = document.getElementById("right");
+          
+          temp = leftBox.value;
+          leftBox.value = rightBox.value;
+          rightBox.value = temp;
+          
+          if (button.value == "JUMP >") {
+            button.value = "< JUMP";
+          } else {
+            button.value = "JUMP >";
+          }
+      }
+    </script>
+  </body>
+</html>

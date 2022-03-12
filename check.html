@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="cone.png">
+    <title>Yepes Ice Cream Shop</title>
+    <style>
+      
+      .header {
+        display: block;
+        background-color: #fabbd4;
+        font-size: 20px;
+        font-family: Futura;
+        padding: 5px;
+      }
+
+      .header-block {
+        display: inline-block;
+        vertical-align: middle;
+        text-align: left;
+        color: white;
+      }
+
+      h1 {
+        display: inline-block;
+        font-size: 50px;
+        margin: 0px;
+        padding: 0px;
+      }
+      
+      #logo { height: 200px; }
+      
+      body {
+        margin: 0px;
+        background-color: #ffdfcc;
+        text-align: center;
+        font-family: Futura;
+        font-size: 15px;
+        color: #472600;
+      }
+
+      form {
+        text-align: left;
+        display: block;
+        border: 1px #472600 solid;
+        border-radius: 7px;
+        width: 150px;
+        padding: 10px;
+        padding-left: 15px;
+        margin: auto;
+        background-color: rgba(255, 255, 255, 0.6);
+      }
+      .button-box {
+        text-align: center;
+      }
+      
+      #button {
+        width: 100px;
+        padding: 5px;
+        margin: 5px;
+        font-size: 12px;
+        border-radius: 10px;
+        border: none;
+        background-color: #fabbd4;
+        font-size: 14px;
+        font-family: Futura;
+      }
+      
+      #button:hover { background-color: #472600; color: white; }
+      #button:active { background-color: #ffdfcc; }
+      
+      @media screen and (max-width: 868px) { 
+        h1 { font-size: 35px; } 
+        .header { font-size: 15px; }
+        #logo { height: 150px; }
+      }
+
+      @media screen and (max-width: 700px) {
+        h1 { font-size: 30px; }
+        #logo { height: 125px; }
+        .header-block { text-align: center; }
+      }
+      
+      
+    </style>
+    
+  </head>
+  <body>
+    
+    <!-- Header -->
+    <div class="header">
+      <div class="header-block">
+        <img src="icecream.png" id="logo"/>
+      </div>
+      <div class="header-block">
+        <h1>Yepes Ice Cream Shop</h1>
+        <br>Try every flavor using our high-tech checkbox system!
+      </div>
+    </div>
+    
+    <br><strong style="font-size: 18px">- Order Form -</strong>
+    <form>
+      <input type="checkbox" id="check">
+      <label for="check" id="label">Check All</label><br>
+      <br>
+      <input type="checkbox" class="box">Chocolate<br>
+      <input type="checkbox" class="box">Vanilla<br>
+      <input type="checkbox" class="box">Strawberry<br>
+      <input type="checkbox" class="box">Pistachio<br>
+      <div class="button-box">
+        <input type="button" value="Submit Order" id="button">
+      </div>
+    </form>
+    
+    
+    <script language="javascript">
+      
+      window.onload = function() {
+        checkAll = document.getElementById("check");
+        checkAll.addEventListener("click", changeCheck);
+        
+        order = document.getElementById("button");
+        order.addEventListener("click", submitOrder);
+      }
+      
+      function changeCheck()
+      {
+        label = document.getElementById("label");
+        
+        if (label.innerHTML == "Check All") {
+          label.innerHTML = "Uncheck All";
+          changeAll(true);
+        } else {
+          label.innerHTML = "Check All";
+          changeAll(false);
+        }
+        
+      }
+      
+      function changeAll(checkOrUncheck)
+      {
+        boxes = document.getElementsByClassName("box");
+        
+        for (let i = 0; i < boxes.length; i++) {
+          boxes[i].checked = checkOrUncheck;
+        }
+      }
+      
+      function submitOrder()
+      {
+        alert("Your order has been submitted. Enjoy!");
+      }
+      
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="hotdog.png">
+    <title>Joe's Hotdog Stand</title>
+    <style>
+      .header {
+        display: block;
+        background-color: #bf2d1d;
+        font-size: 20px;
+        font-family: Futura;
+        padding: 5px;
+        text-align: center;
+      }
+
+      .header-block {
+        display: inline-block;
+        vertical-align: middle;
+        color: white;
+        text-align: left;
+      }
+
+      h1 {
+        display: inline-block;
+        font-size: 50px;
+        margin: 0px;
+        padding: 0px;
+      }
+      
+      body { 
+        margin: 0px;
+        font-family: Futura;
+      }
+      
+      .row {
+        background-color: #bf2d1d;
+        display: block;
+        padding: 10px;
+        margin: 10px auto;
+        width: 300px;
+        border-radius: 15px;
+      }
+      
+      #items {
+        background-color: #3b3559;
+      }
+      
+      .col {
+        display: inline-block;
+        width: 90px;
+      }
+
+      .order {
+        display: block;
+        text-align: center;
+        vertical-align: top;
+        background-color: #b3d2ff;
+        color: white;
+      }
+
+      .column {
+        background-color: #bf2d1d;
+        display: inline-block;
+        line-height: 1.8;
+        padding: 15px;
+        margin: 20px;
+        border-radius: 10px;
+        font-family: Futura;
+        text-align: left;
+        vertical-align: middle;
+      }
+
+      #logo { height: 200px; }
+
+      #subheading {
+        display: block;
+        text-align: center;
+        margin: 10px;
+        font-family: Futura;
+        font-size: 24px;
+        color: #bf2d1d;
+        font-weight: bolder;
+      }
+
+      #labels {
+        margin: 0px;
+        margin-right: 10px;
+        padding: 0px;
+      }
+
+      #prices {
+        text-align: right;
+        margin: 0px;
+        padding: 0px;
+      }
+      
+      #button {
+        width: 120px;
+        padding: 5px;
+        margin: 5px;
+        border-radius: 10px;
+        border: none;
+        background-color: #bf2d1d;
+        font-size: 15px;
+        font-family: Futura;
+        color: white;
+      }
+      
+      #button:hover { background-color: #392d75; }
+      #button:active { background-color: #e6c212; }
+
+      @media screen and (max-width: 366px) { #break { display: none; } }
+      @media screen and (max-width: 835px) { h1 { font-size: 35px; } }
+
+      @media screen and (max-width: 700px) {
+        
+        h1 { font-size: 30px; }
+        #logo { height: 125px; }
+        
+        .header {
+          font-size: 15px;
+          padding: 3px;
+          padding-bottom: 10px;
+        }
+        
+        .column {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }  
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="header-block">
+        <img src="joes.png" id="logo"/>
+      </div>
+      <div class="header-block">
+        <h1>Joe's Hotdog Stand</h1>
+        <br>The best hotdogs in town!
+      </div>
+    </div>
+    
+    <!-- Order Form -->
+    <div id="subheading">Order Here</div>
+    
+    <div class="order">
+      <br>
+      <div class="row" style="font-weight: bold;">
+        <div class="col">Item</div>
+        <div class="col">Cost</div>
+        <div class="col">Amount</div>
+      </div>
+      <div class="row" id="items">
+        <div class="col" style="text-align: left;">Hotdogs</div>
+        <div class="col">$3.75</div>
+        <div class="col"><form>
+          <select class="selection" id="hotdogs">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </form></div>
+      </div>
+      <div class="row" id="items">
+        <div class="col" style="text-align: left;">Fries</div>
+        <div class="col">$2.00</div>
+        <div class="col"><form>
+          <select class="selection" id="fries">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </form></div>
+      </div>
+      <div class="row" id="items">
+        <div class="col" style="text-align: left;">Sodas</div>
+        <div class="col">$1.80</div>
+        <div class="col"><form>
+          <select class="selection" id="sodas">
+            <option value=""></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </form></div>
+      </div>
+      <input type="button" name="order" value="Submit Order" id="button">
+      <br><br>
+    </div>
+    
+    <!-- Order Information -->
+    <div id="display"></div>
+    <script language="javascript">
+      
+      window.onload = function() {
+        button = document.getElementById("button");
+        button.addEventListener("click", getOrder);
+      }
+      
+      function getOrder()
+      {
+        hotdogs = document.getElementById("hotdogs").value;
+        fries = document.getElementById("fries").value;
+        sodas = document.getElementById("sodas").value;
+        
+        hotdogs = (hotdogs == "") ? 0 : parseInt(hotdogs);
+        fries = (fries == "") ? 0 : parseInt(fries);
+        sodas = (sodas == "") ? 0 : parseInt(sodas);
+        
+        /* ensure at least one thing is being ordered */
+        if (hotdogs == 0 && fries == 0 && sodas == 0) {
+          alert("You haven't chosen anything to order!");
+        } else {
+          calculateOrder(hotdogs, fries, sodas);
+        }
+        
+      }
+      
+      function calculateOrder(hotdogs, fries, sodas)
+      {
+        /* Calculate the subtotal */
+        subtotal = (hotdogs * 3.75) + (fries * 2.00) + (sodas * 1.80);
+        
+        /* Apply the discount if needed */
+        if (subtotal >= 20) {
+          discount = subtotal * 0.1;
+          subtotal -= discount;
+        } else {
+          discount = 0;
+        }
+        
+        /* Calculate the tax, total, and the original subtotal */
+        tax = subtotal * 0.0625;
+        total = subtotal + tax;
+        subtotal += discount;
+        
+        div = document.getElementById("display");
+        
+        /* Display the order information to the customer */
+        div.innerHTML = "<div id='subheading'>Your Order</div>" + 
+                        "<div class='order'>" + 
+                         "<div class='column'>" + 
+                           hotdogs + " Hotdogs <br />" +
+                           fries   + " Fries <br />" +
+                           sodas   + " Sodas <br />" +
+                           "<br id='break' />" +
+                         "</div>" +
+                         "<div class='column'>" + 
+                           "<div class='column' id='labels'>" +
+                             "Subtotal: <br />" +
+                             "Discount: <br />" +
+                             "Tax: <br />" +
+                             "Total: <br />" +
+                           "</div>" +
+                           "<div class='column' id='prices'>" +
+                             "$" + subtotal.toFixed(2) + "<br />" +
+                             "- $" + discount.toFixed(2) + "<br />" +
+                             "+ $" + tax.toFixed(2) + "<br />" +
+                             "$" + total.toFixed(2) + "<br />" +
+                           "</div>" +
+                         "</div>" +
+                       "</div>";
+                       
+      }  
+    </script>
+  </body>
+</html>

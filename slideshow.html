@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+    crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="paw.png">
+    <title>Animal Slideshow</title>
+    <style>
+      img {
+        width: 500px;
+        height: auto;
+        border-radius: 15px;
+      }
+      
+      body {
+        margin: 0px;
+        text-align: center;
+        background-color: #f5eea2;
+      }
+      
+      .header {
+        display: block;
+        background-color: #36ad5c;
+        font-size: 20px;
+        font-family: Futura;
+        padding: 30px;
+        vertical-align: middle;
+        text-align: center;
+        color: white;
+      }
+
+      h1 {
+        display: inline-block;
+        font-size: 50px;
+        margin: 0px;
+        padding: 0px;
+      }
+      
+      input {
+        width: 100px;
+        padding: 10px;
+        margin: 10px;
+        font-size: 14px;
+        border-radius: 10px;
+        border: none;
+        background-color: white;
+        font-size: 14px;
+      }
+      
+      input:hover { background-color: #36ad5c; }
+      input:active { background-color: pink; }
+      
+      @media screen and (max-width: 600px) {
+        img { width: 300px; }
+        h1 { font-size: 24px; }
+        .header { font-size: 18px; }
+      }
+      
+    </style>
+  </head>
+  <body>
+    <script language="javascript">
+      
+      slides = ["images/bunny.jpg", "images/kitten.jpg", "images/hedgehog.jpg", 
+                "images/puppy.jpg", "images/penguin.jpg"];
+      
+      currIndex = 0;
+      
+      $(document).ready (function()
+      {   
+      	$("#start").click(startShow);
+        $("#stop").click(stopShow);
+      })
+      
+      function startShow()
+      {
+        $("#slides img").fadeOut(2000, nextSlide);
+      }
+      
+      function nextSlide()
+      {
+        currIndex++;
+        
+        if (currIndex >= slides.length) {
+          currIndex = 0;
+        }
+        
+    		$("#slides img").attr("src", slides[currIndex]);
+    		$("#slides img").fadeIn(2000, startShow);
+      }
+      
+      function stopShow()
+      {
+        $("#slides img").stop().fadeIn();
+      }
+      
+    </script>
+    
+    <!-- Header -->
+    <div class="header">
+      <h1>Baby Animal Slideshow</h1>
+      <br>Look at cute animals in an automatic slideshow!
+    </div>
+    <br>
+    
+    <!-- Slideshow -->
+    <div id="slides">
+      <img src="images/bunny.jpg" alt="Slideshow here">
+    </div>
+    <input type="button" name="" value="Start" id="start">
+    <input type="button" name="" value="Stop" id="stop">
+    
+  </body>
+</html>
